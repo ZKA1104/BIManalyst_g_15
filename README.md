@@ -29,7 +29,7 @@ The script is built around Industry Foundation Classes (IFC), which is an open s
 
 Key IFC concepts involved:
 - **IFC File**: The input is an IFC file, which contains detailed information about a building's structure and components.
-- **Window Elements**: The script focuses on analyzing elements classified as windows (`IfcWindow`) within the IFC schema.
+- **Window Elements**: The script focuses on analyzing elements classified as windows (`IfcPlate`) within the IFC schema.
 - **Rules**: The `windowRule` function is used to apply specific constraints or checks to each window element.
 
 ## Further Analysis
