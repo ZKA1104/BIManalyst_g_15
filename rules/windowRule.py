@@ -1,5 +1,9 @@
 import ifcopenshell
-from bonsai.bim.ifc import IfcStore
-file = IfcStore.get_file()
-things = file.by_type('IfcPlate')
-print(len(things))
+
+def checkRule(model):
+    windows = model.by_type('IfcPlate')
+
+    result = f"There are: {len(windows)} windows."
+
+    return result
+
