@@ -1,0 +1,35 @@
+import ifcopenshell
+
+def calculate_area_from_plate(plate):
+    """Estimate area based on the geometric properties of the plate."""
+    area = 0.0
+
+    # Check if the plate has a shape representation
+    if plate.Representation:
+        for representation in plate.Representation.Representations:
+            for item in representation.Items:
+                # For rectangular plates, check IfcPlate
+                if item.is_a("IfcPlate"):
+                    # Assuming IfcPlate has a profile
+                    if hasattr(item, "Profile"):
+                        profile = item.Profile
+                        if profile.is_a("IfcRectangleProfileDef"):
+                            area += profile.Width * profile.Height
+                        elif profile.is_a("IfcCircleProfileDef"):
+                            area += 3.14159 * (profile.Radius ** 2)  # πr²
+                # Handle other shapes if necessary
+                # For example, IfcPolygonalProfileDef, etc.
+
+    return area
+
+# Open the IFC model
+model = ifcopenshell.open("C:\\Users\\mikae\\OneDrive\\Dokumenter\\DTU BYGNINGSDESIGN\\3.semster\\41934 Advanced Building Information Modeling\\CES_BLD_24_06_ARC.IFC")
+
+# Initialize total area variable
+total_area = 0.0
+
+# Iterate through all IfcPlate elements in the model
+for plate in model.by_type("IfcPlate"):
+    total_area += calculate_area_from_plate(plate)
+
+print("Total area of IfcPlate elements:", total_area)
