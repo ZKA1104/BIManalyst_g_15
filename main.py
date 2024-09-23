@@ -7,8 +7,3 @@ model = ifcopenshell.open("C:\\Users\\mikae\\OneDrive\\Dokumenter\\DTU BYGNINGSD
 windowResult = windowRule.checkRule(model)
 
 print("Window result:", windowResult)
-
-
-
-
-
