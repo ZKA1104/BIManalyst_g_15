@@ -4,17 +4,17 @@ import ifcopenshell
 model = ifcopenshell.open("C:\\Users\\mikae\\OneDrive\\Dokumenter\\DTU BYGNINGSDESIGN\\3.semster\\41934 Advanced Building Information Modeling\\CES_BLD_24_06_ARC.IFC")
 
 # Initialize total area variable
-total_area = (0.0)
+total_area = 0.0
 
-# Iterate through all IfcPlate elements in the model for plate in model.by_type("IfcPlate"):
-# Check if the plate has a geometric representation
-if plate.Representation:
-for representation in plate.Representation.Representations:
-for item in representation.Items:
+# Iterate through all IfcPlate elements in the model
+for plate in model.by_type("IfcPlate"):
+    # Check if the plate has a geometric representation
+    if plate.Representation:
+        for representation in plate.Representation.Representations:
+            for item in representation.Items:
+                # Check for a specific geometric type (like IfcRectangleProfileDef)
+                if item.is_a("IfcRectangleProfileDef"):
+                    total_area += item.Width * item.Height
 
-# Check for a specific geometric type (like IfcRectangleProfileDef)
-if item.is_a("IfcRectangleProfileDef"):
-total_area += item.Width * item.Height  
-
-# Calculate area
+# Output the total area of IfcPlate elements
 print("Total area of IfcPlate elements:", total_area)
