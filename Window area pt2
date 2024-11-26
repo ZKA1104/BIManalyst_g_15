@@ -1,4 +1,5 @@
 import ifcopenshell
+<<<<<<< HEAD
 
 # Funktion til beregning af U-værdi
 def calculate_u_value(layers):
@@ -22,6 +23,20 @@ def calculate_u_value(layers):
         conductivity = layer.get("conductivity", 0)
         if thickness > 0 and conductivity > 0:
             R_total += thickness / conductivity
+=======
+model = ifcopenshell.open("C:\\Users\\mikae\\OneDrive\\Dokumenter\\DTU BYGNINGSDESIGN\\3.semster\\41934 Advanced Building Information Modeling\\CES_BLD_24_06_ARC.IFC")
+
+total_area = 0.0
+
+for plate in model.by_type("IfcPlate"):
+    # Check if the plate has a geometric representation
+    if plate.Representation:
+        for representation in plate.Representation.Representations:
+            for item in representation.Items:
+                # Check for a specific geometric type (like IfcRectangleProfileDef)
+                if item.is_a("IfcRectangleProfileDef"):
+                    total_area += item.Width * item.Height
+>>>>>>> 7ebf38d0dc9c7fe2acc49e13beb49ab437cdf9c3
 
     # Beregn U-værdi
     if R_total > 0:
