@@ -1,0 +1,50 @@
+import ifcopenshell
+
+def get_plate_u_values(ifc_file_path):
+    # Open the IFC model
+    model = ifcopenshell.open(ifc_file_path)
+
+    # Find all plate entities (windows in your case)
+    plates = model.by_type("IfcPlate")
+
+    # Prepare a list to store results
+    plate_u_values = []
+
+    # Iterate through each plate and find its U-value
+    for plate in plates:
+        u_value = None
+        
+        # Find the property sets associated with the plate
+        for rel in plate.HasAssociations:
+            if rel.is_a("IfcRelDefinesByProperties"):
+                # Get the property set
+                property_set = rel.RelatingPropertyDefinition
+                if property_set.is_a("IfcPropertySet"):
+                    # Check each property in the property set
+                    for property in property_set.HasProperties:
+                        # Print each property for debugging
+                        print(f"Property Name: {property.Name}, Value: {property.NominalValue}")
+                        if property.Name == "UValue":  # Look for U-value
+                            u_value = property.NominalValue
+                            break
+
+        # Append the result
+        if u_value is not None:
+            plate_u_values.append((plate.GlobalId, u_value))
+        else:
+            plate_u_values.append((plate.GlobalId, "U-value not defined"))
+
+    return plate_u_values
+
+# Define the path to your IFC file
+ifc_file_path = "C:\\Users\\mikae\\OneDrive\\Dokumenter\\DTU BYGNINGSDESIGN\\3.semster\\41934 Advanced Building Information Modeling\\CES_BLD_24_06_ARC.IFC"
+
+# Get U-values of the plates (windows)
+u_values = get_plate_u_values(ifc_file_path)
+
+# Print the U-values
+print("Plate U-values:")
+for plate_id, u_value in u_values:
+    print(f"Plate ID: {plate_id}, U-value: {u_value}")
+
+print(plate.HasAssociations)
