@@ -12,9 +12,10 @@ def calculate_u_value(layers):
     # Indvendig og udvendig varmeovergangsmodstand (standardværdier)
     Rsi = 0.13  # m²·K/W
     Rse = 0.04  # m²·K/W
+    Rsl = 1.753 # m²·K/W
     
     # Start med overgangsmodstandene
-    R_total += Rsi + Rse
+    R_total += Rsi + Rse + Rsl
 
     # Tilføj modstand for hvert lag
     for layer in layers:
@@ -46,7 +47,7 @@ def get_window_layers(IfcPlate):
                 material = definition.RelatingMaterial
                 if material.is_a("IfcMaterialLayerSet"):
                     for layer in material.MaterialLayers:
-                        thickness = getattr(layer, "LayerThickness", 0) / 0.1000  # Omregn til meter
+                        thickness = getattr(layer, "LayerThickness", 0) / 100  # Omregn til meter
                         conductivity = getattr(layer.Material, "ThermalConductivity", None)
                         layers.append({"thickness": thickness, "conductivity": conductivity})
     
