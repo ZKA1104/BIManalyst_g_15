@@ -1,4 +1,10 @@
-# **Role identification:**
+# **Project Title:**
+U-Value Calculation Tool for Windows and Glazing
+
+# **Summary**
+This Python-based tool calculates the U-Value of windows and glazing systems, simulating their impact on thermal insulation and daylight performance. It aids in optimizing energy efficiency in building design within BIM environments.
+
+# **Role identification**
 Our tool is specifically designed for the R2: OpenBIM Analyst role, with its primary objective being the analysis of standard IFC files to extract essential data related to windows and glazing materials. This data is presented in a comprehensive Excel sheet, providing valuable insights to aid sustainability engineers in their analysis and decision-making processes.
 
 
