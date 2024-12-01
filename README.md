@@ -1,3 +1,11 @@
+# **Role identification:**
+Our tool is specifically designed for the R2: OpenBIM Analyst role, with its primary objective being the analysis of standard IFC files to extract essential data related to windows and glazing materials. This data is presented in a comprehensive Excel sheet, providing valuable insights to aid sustainability engineers in their analysis and decision-making processes.
+
+
+# **Focus Area and BIM Use**
+Our project focuses on developing a tool that processes a standard IFC file to extract key information, such as the U-values of windows. The primary goal of this tool is to simplify the evaluation of window and glazing materials in a BIM model, providing sustainability engineers with all the essential data needed for their assessments. The tool is fully integrated within Blender, utilizing its scripting interface and the BlenderBIM add-on. The script has been written entirely in Python, ensuring seamless functionality and ease of use within the BIM workflow.
+
+
 # **U-Value Calculation from IFC Files**
 
 This repository contains a Python script that uses the **ifcopenshell** library to calculate the U-value of windows in an IFC model. The script automates the process of extracting material layer data from the IFC file and calculating the thermal transmittance (U-value) based on this information.
