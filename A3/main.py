@@ -1,6 +1,6 @@
 import ifcopenshell
 
-# Funktion til beregning af U-værdi
+# Here the function for calculating the U-value is being defined
 def calculate_u_value(layers):
     """
     Beregner U-værdien baseret på lagtykkelser og varmeledningsevne.
@@ -9,58 +9,59 @@ def calculate_u_value(layers):
     """
     R_total = 0
 
-    # Indvendig og udvendig varmeovergangsmodstand (standardværdier)
+    # The interior and exterior heat transfer default value is being defined.
     Rsi = 0.13  # m²·K/W
     Rse = 0.04  # m²·K/W
     Rsl = 1.753 # m²·K/W
     
-    # Start med overgangsmodstandene
+    # The sum of the heat transfer value is calculated
     R_total += Rsi + Rse + Rsl
 
-    # Tilføj modstand for hvert lag
+    # A resistance for each of the layers is being added to the heat transfer value
     for layer in layers:
         thickness = layer.get("thickness", 0)
         conductivity = layer.get("conductivity", 0)
         if thickness > 0 and conductivity > 0:
             R_total += thickness / conductivity
 
-    # Beregn U-værdi
+    # The U-value is calculated by using the formula
     if R_total > 0:
         return 1 / R_total
     else:
         return None  # Returnér None, hvis beregning ikke er mulig
 
-# Funktion til at hente materialelag for et vindue fra en IFC-fil
+# This function draws out the material from the IFC-file, if the material is available.
 def get_window_layers(IfcPlate):
     """
-    Henter materialelag for et givet vindue fra IFC-filen.
+Gets material layers for a given window from the IFC file.
     
     window: IfcWindow-objekt
-    Returnerer en liste af lag med tykkelse og varmeledningsevne.
+    Returns a list of layers with thickness and thermal conductivity.
+
     """
     layers = []
     
-    # Find materialer knyttet til vinduet
+# Find materials attached to the window
     if hasattr(IfcPlate, "IsDefinedBy"):
         for definition in IfcPlate.IsDefinedBy:
             if definition.is_a("IfcRelAssociatesMaterial"):
                 material = definition.RelatingMaterial
                 if material.is_a("IfcMaterialLayerSet"):
                     for layer in material.MaterialLayers:
-                        thickness = getattr(layer, "LayerThickness", 0) / 100  # Omregn til meter
+                        thickness = getattr(layer, "LayerThickness", 0) / 100  # Convert to meter
                         conductivity = getattr(layer.Material, "ThermalConductivity", None)
                         layers.append({"thickness": thickness, "conductivity": conductivity})
     
     return layers
 
-# Åbn IFC-modellen
+# Open the IFC-model   
 ifc_file_path = "C:\\Users\\mikae\\OneDrive\\Dokumenter\\DTU BYGNINGSDESIGN\\3.semster\\41934 Advanced Building Information Modeling\\CES_BLD_24_06_ARC.IFC"
 model = ifcopenshell.open(ifc_file_path)
 
-# Find alle vinduer i modellen
+# Find all windows in the model
 windows = model.by_type("IfcPlate")
 
-# Beregn og print U-værdier for vinduer
+# Calculate the U-value and print output
 for window in windows:
     layers = get_window_layers(window)
     u_value = calculate_u_value(layers)
