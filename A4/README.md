@@ -1,5 +1,5 @@
-# **Project Title:**
-U-Value Calculation Tool for Windows and Glazing
+
+# **U-Value Calculation Tool for Windows and Glazing**
 
 # **Summary**
 This Python-based tool calculates the U-Value of windows and glazing systems, simulating their impact on thermal insulation and daylight performance. It aids in optimizing energy efficiency in building design within BIM environments.
