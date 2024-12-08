@@ -3,9 +3,9 @@ import ifcopenshell
 # Here the function for calculating the U-value is being defined
 def calculate_u_value(layers):
     """
-    Beregner U-værdien baseret på lagtykkelser og varmeledningsevne.
+    Calculates the U-value based on layer thicknesses and thermal conductivity.
     
-    layers: Liste af dictionaries med 'thickness' (i meter) og 'conductivity' (W/mK)
+    layers: List of dictionaries with 'thickness' (in meters) and 'conductivity' (W/mK)
     """
     R_total = 0
 
@@ -28,7 +28,7 @@ def calculate_u_value(layers):
     if R_total > 0:
         return 1 / R_total
     else:
-        return None  # Returnér None, hvis beregning ikke er mulig
+        return None  # Return None if calculation is not possible
 
 # This function draws out the material from the IFC-file, if the material is available.
 def get_window_layers(IfcPlate):
