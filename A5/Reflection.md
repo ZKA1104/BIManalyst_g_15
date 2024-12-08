@@ -27,10 +27,8 @@ We need to improve our use of OpenBIM, especially by exploring its advanced feat
    It also helped us define specific needs, like incorporating automatic validation features and improving the user interface for better accessibility.  
 
 2. **Were there too many or too few tools?**  
-   The number of tools provided was adequate, but certain features could be refined. For example:  
-   - The inclusion of detailed analytics or comparison modules would enhance the tool's usability for advanced users.  
-   - The scripting environment could benefit from more templates or examples tailored to common use cases, such as energy modeling or thermal calculations.  
-
+  The number of tools for the course was fine. We had enough, as there were many reports and guides provided. I don't think we needed more tools, and if anything, some could have been left out to avoid overwhelming us.
+  
 3. **Should we have had more freedom in the assignment?**  
    No, the given framework effectively guided us to focus on relevant aspects.
 
