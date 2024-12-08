@@ -9,12 +9,7 @@
   By the end, we have progressed to a point where we understand how to use OpenBIM tools for analyzing data and deriving meaningful insights. We can confidently apply these skills to validate building designs against standards, such as energy requirements or sustainability criteria. This progression positions us closer to the *Analyst* level, with growing autonomy in using OpenBIM.
 
 ### What Do We Still Need to Learn?
-- **Advanced Analytics:**  
-  We need to explore how OpenBIM integrates with advanced analysis tools to assess performance indicators such as energy consumption, thermal behavior, and structural durability and other projects.  
-- **Collaboration:**  
-  Expanding our understanding of OpenBIM's collaborative tools for multi-disciplinary projects. For example, how OpenBIM facilitates communication and data sharing across teams.  
-- **Standard Compliance Validation:**  
-  While we understand the basics of validation, implementing automated workflows for checking compliance with energy codes, sustainability certifications, and local building regulations would be valuable.
+We need to improve our use of OpenBIM, especially by exploring its advanced features in more depth. This includes becoming more familiar with its analysis tools, automation capabilities, and collaboration functions. We aim to enhance our overall workflow and gain a better understanding of how to integrate OpenBIM with other software tools to maximize its potential. With more practice, we hope to streamline processes, increase the accuracy of our work, and make more informed decisions during the design and analysis phases.
 
 ### Future Use of OpenBIM
 - **Academic Use:**  
